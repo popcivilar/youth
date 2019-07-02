@@ -1,4 +1,4 @@
-package com.popcivilar.youth.youthbase.base;
+package com.popcivilar.youth.youthbase.base.mapper;
 
 import tk.mybatis.mapper.common.IdsMapper;
 import tk.mybatis.mapper.common.Mapper;

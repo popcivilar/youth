@@ -1,19 +1,19 @@
-package com.popcivilar.youth.youthbase.base;
+package com.popcivilar.youth.youthbase.base.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.popcivilar.youth.youthbase.base.entity.EntityBean;
+import com.popcivilar.youth.youthbase.base.mapper.BaseMapper;
 import com.popcivilar.youth.youthbase.exception.BusinessException;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
-@Transactional
-public abstract class BaseServiceImpl<T extends EntityBean> implements BaseService<T> {
+public class BaseServiceImpl<T extends EntityBean> implements BaseService<T> {
 
     @Autowired
     private BaseMapper<T> mapper;
@@ -149,5 +149,9 @@ public abstract class BaseServiceImpl<T extends EntityBean> implements BaseServi
         }
         bean.setId(id);
         return bean;
+    }
+
+    public T selectOneByExample(Object o) {
+        return null;
     }
 }

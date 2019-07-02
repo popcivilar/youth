@@ -1,12 +1,14 @@
-package com.popcivilar.youth.youthbase.base;
+package com.popcivilar.youth.youthbase.base.service;
 
 import com.github.pagehelper.Page;
+import com.popcivilar.youth.youthbase.base.entity.EntityBean;
+import tk.mybatis.mapper.common.IdsMapper;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.io.Serializable;
 
 
-public interface BaseService<T extends EntityBean> extends Mapper<T> {
+public interface BaseService<T extends EntityBean> extends Mapper<T>, IdsMapper<T> {
 
 
     /**
@@ -38,3 +40,5 @@ public interface BaseService<T extends EntityBean> extends Mapper<T> {
      * @return 影响的行数
      */
     int deleteLogical(T record);}
+
+

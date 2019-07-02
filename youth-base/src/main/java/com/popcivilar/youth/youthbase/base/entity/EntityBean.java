@@ -1,4 +1,4 @@
-package com.popcivilar.youth.youthbase.base;
+package com.popcivilar.youth.youthbase.base.entity;
 
 import javax.persistence.Column;
 import java.io.Serializable;
