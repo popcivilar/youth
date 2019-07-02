@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/general-service/general-service.iml" filepath="$PROJECT_DIR$/general-service/general-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youth-base/youth-base.iml" filepath="$PROJECT_DIR$/youth-base/youth-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youth-parent.iml" filepath="$PROJECT_DIR$/youth-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/youth-web/youth-web.iml" filepath="$PROJECT_DIR$/youth-web/youth-web.iml" />
+    </modules>
+  </component>
+</project>

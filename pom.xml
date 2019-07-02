@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.popcivilar.youth</groupId>
+    <artifactId>youth-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>youth-parent</name>
+    <description>youth-parent Spring Boot</description>
+
+    <!--版本管理  -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <youth.common.version>0.0.1-SNAPSHOT</youth.common.version>
+        <eureka.server.version>1.4.6.RELEASE</eureka.server.version>
+        <springboot.version>1.5.20.RELEASE</springboot.version>
+        <swagger.version>2.9.2</swagger.version>
+        <cloud.version>Edgware.RELEASE</cloud.version>
+        <base.version>0.0.1-SNAPSHOT</base.version>
+        <fastjson.version>1.2.4</fastjson.version>
+        <mybatis.mapper.version>1.1.3</mybatis.mapper.version>
+        <mysql.jdbc.version>5.1.44</mysql.jdbc.version>
+        <druid.version>1.0.13</druid.version>
+        <pagehelper.version>1.1.2</pagehelper.version>
+        <github.pagehelper.version>5.1.8</github.pagehelper.version>
+
+
+    </properties>
+
+    <!--此处填写的依赖，子类强制继承 -->
+    <dependencies>
+
+    </dependencies>
+
+
+    <!--此处填写的依赖，子类可以显示的继承，否则只是声明  -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka-server</artifactId>
+                <version>${eureka.server.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.popcivilar.youth</groupId>
+                <artifactId>youth-common</artifactId>
+                <version>${youth.common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+
+            <!--模块 -->
+            <dependency>
+                <groupId>com.popcivilar.youth</groupId>
+                <artifactId>youth-base</artifactId>
+                <version>${base.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${mybatis.mapper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.jdbc.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${github.pagehelper.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,20 @@
+
+                        __    __
+                       /\ \__/\ \
+ __  __    ___   __  __\ \ ,_\ \ \___
+/\ \/\ \  / __`\/\ \/\ \\ \ \/\ \  _ `\
+\ \ \_\ \/\ \L\ \ \ \_\ \\ \ \_\ \ \ \ \
+ \/`____ \ \____/\ \____/ \ \__\\ \_\ \_\
+  `/___/> \/___/  \/___/   \/__/ \/_/\/_/
+     /\___/
+     \/__/
+
+开发环境: ${spring.profiles.active}
+服务: ${spring.application.name}
+端口: ${server.port}
+数据库: ${spring.datasource.url}
+Redis: ${spring.redis.host}
+Job: ${xxl.job.admin.addresses}
+Job-exec-port: ${xxl.job.executor.port}
+日志路径：${logging.path}
+SpringBoot的版本号: ${spring-boot.version}
