@@ -15,92 +15,13 @@
         <result column="USER_LEVEL" property="userLevel" jdbcType="INTEGER" />
         <result column="CREATE_DATE" property="createDate" jdbcType="DATE" />
         <result column="MODIFY_DATE" property="modifyDate" jdbcType="DATE" />
+        <result column="DELETED_FLAG" property="deletedFlag" jdbcType="VARCHAR" />
     </resultMap>
 
 
     <sql id="Base_Column_List" >
         ID, USER_IP_ADDR, USER_CODE, NICK_NAME, USER_PWD, USER_MAIL, USER_HEAD, USER_BIRTH,
-        USER_PHONE, USER_LEVEL, CREATE_DATE, MODIFY_DATE
+        USER_PHONE, USER_LEVEL, CREATE_DATE, MODIFY_DATE,deletedFlag
     </sql>
 
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-        select
-        <include refid="Base_Column_List" />
-        from user_info
-        where ID = #{id,jdbcType=INTEGER}
-    </select>
-
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-        delete from user_info
-        where ID = #{id,jdbcType=INTEGER}
-    </delete>
-
-    <insert id="insert" parameterType="com.popcivilar.youth.general.user.entity.UserInfo" >
-        insert into user_info (ID, USER_IP_ADDR, USER_CODE,
-            NICK_NAME, USER_PWD, USER_MAIL,
-            USER_HEAD, USER_BIRTH, USER_PHONE,
-            USER_LEVEL, CREATE_DATE, MODIFY_DATE
-            )
-        values (#{id,jdbcType=INTEGER}, #{userIpAddr,jdbcType=VARCHAR}, #{userCode,jdbcType=VARCHAR},
-            #{nickName,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, #{userMail,jdbcType=VARCHAR},
-            #{userHead,jdbcType=VARCHAR}, #{userBirth,jdbcType=DATE}, #{userPhone,jdbcType=INTEGER},
-            #{userLevel,jdbcType=INTEGER}, #{createDate,jdbcType=DATE}, #{modifyDate,jdbcType=DATE}
-            )
-    </insert>
-
-    <update id="updateByPrimaryKeySelective" parameterType="com.popcivilar.youth.general.user.entity.UserInfo" >
-        update user_info
-        <set >
-            <if test="userIpAddr != null" >
-                USER_IP_ADDR = #{userIpAddr,jdbcType=VARCHAR},
-            </if>
-            <if test="userCode != null" >
-                USER_CODE = #{userCode,jdbcType=VARCHAR},
-            </if>
-            <if test="nickName != null" >
-                NICK_NAME = #{nickName,jdbcType=VARCHAR},
-            </if>
-            <if test="userPwd != null" >
-                USER_PWD = #{userPwd,jdbcType=VARCHAR},
-            </if>
-            <if test="userMail != null" >
-                USER_MAIL = #{userMail,jdbcType=VARCHAR},
-            </if>
-            <if test="userHead != null" >
-                USER_HEAD = #{userHead,jdbcType=VARCHAR},
-            </if>
-            <if test="userBirth != null" >
-                USER_BIRTH = #{userBirth,jdbcType=DATE},
-            </if>
-            <if test="userPhone != null" >
-                USER_PHONE = #{userPhone,jdbcType=INTEGER},
-            </if>
-            <if test="userLevel != null" >
-                USER_LEVEL = #{userLevel,jdbcType=INTEGER},
-            </if>
-            <if test="createDate != null" >
-                CREATE_DATE = #{createDate,jdbcType=DATE},
-            </if>
-            <if test="modifyDate != null" >
-                MODIFY_DATE = #{modifyDate,jdbcType=DATE},
-            </if>
-        </set>
-        where ID = #{id,jdbcType=INTEGER}
-    </update>
-
-    <update id="updateByPrimaryKey" parameterType="com.popcivilar.youth.general.user.entity.UserInfo" >
-        update user_info
-        set USER_IP_ADDR = #{userIpAddr,jdbcType=VARCHAR},
-            USER_CODE = #{userCode,jdbcType=VARCHAR},
-            NICK_NAME = #{nickName,jdbcType=VARCHAR},
-            USER_PWD = #{userPwd,jdbcType=VARCHAR},
-            USER_MAIL = #{userMail,jdbcType=VARCHAR},
-            USER_HEAD = #{userHead,jdbcType=VARCHAR},
-            USER_BIRTH = #{userBirth,jdbcType=DATE},
-            USER_PHONE = #{userPhone,jdbcType=INTEGER},
-            USER_LEVEL = #{userLevel,jdbcType=INTEGER},
-            CREATE_DATE = #{createDate,jdbcType=DATE},
-            MODIFY_DATE = #{modifyDate,jdbcType=DATE}
-        where ID = #{id,jdbcType=INTEGER}
-    </update>
 </mapper>

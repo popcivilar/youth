@@ -1,8 +1,9 @@
 package com.popcivilar.youth.general.user.web;
 
 
+import com.popcivilar.youth.general.user.entity.UserInfo;
 import com.popcivilar.youth.general.user.service.UserInfoService;
-import com.popcivilar.youth.youthbase.base.ModuleReturn;
+import com.popcivilar.youth.youthbase.base.entity.ModuleReturn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,9 @@ public class UserController {
 
     @GetMapping("/getInfo")
     public ModuleReturn getInfo(){
-        String msg = userInfoService.sayHello();
-        ModuleReturn<String> success = ModuleReturn.success(msg);
+        userInfoService.sayHello();
+        UserInfo userInfo = userInfoService.selectByPrimaryKey("1");
+        ModuleReturn<UserInfo> success = ModuleReturn.success(userInfo);
         return success;
     }
 
