@@ -1,9 +1,15 @@
 package com.popcivilar.youth.youthbase.config;
 
+import com.popcivilar.youth.youthbase.base.mapper.BaseMapper;
 import com.popcivilar.youth.youthbase.mybatis.interceptor.InsertInterceptor;
+import org.apache.ibatis.mapping.DatabaseIdProvider;
+import org.apache.ibatis.mapping.VendorDatabaseIdProvider;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
 import java.util.Properties;
 
@@ -23,4 +29,5 @@ public class MybatisConfig  {
         sqlSessionFactory.getConfiguration().addInterceptor(executorInterceptor);
         return "interceptor";
     }
+
 }
