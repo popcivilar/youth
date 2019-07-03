@@ -28,10 +28,22 @@ public class ModuleReturn<T> implements Serializable {
     public static <T> ModuleReturn<T> success(T data,String returnMsg){
         return new ModuleReturn("200",data,returnMsg);
     }
+
     public static <T> ModuleReturn<T> success(T data){
         return new ModuleReturn("200",data);
     }
 
+    public static <T> ModuleReturn<T> success(){
+        return new ModuleReturn("200",null);
+    }
+
+    public static <T> ModuleReturn<T> fail(String returnMsg){
+        return new ModuleReturn("200",null);
+    }
+
+    public static <T> ModuleReturn<T> fail(T data,String returnMsg){
+        return new ModuleReturn("500",returnMsg);
+    }
 
     public String getCode() {
         return code;

@@ -1,5 +1,10 @@
 package com.popcivilar.youth.youthbase.exception;
 
+/**
+ * @description 业务异常
+ * @author
+ * @time 2019年07月03日
+ */
 public class BusinessException extends RuntimeException {
 
     public BusinessException(String keyMessage, Object[] args, Throwable cause) {

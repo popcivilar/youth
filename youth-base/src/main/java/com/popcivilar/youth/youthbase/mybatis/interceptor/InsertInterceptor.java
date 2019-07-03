@@ -4,6 +4,7 @@ import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.plugin.*;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,7 @@ import java.util.Random;
 
 /**
  * @desc 用于设置插入的ID
- * @author neusoft
+ * @author
  */
 @Component
 @Intercepts(  {
@@ -23,7 +24,7 @@ import java.util.Random;
 })
 public class InsertInterceptor implements Interceptor {
 
-//    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public Object intercept(Invocation invocation) throws Throwable {
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
@@ -40,6 +41,7 @@ public class InsertInterceptor implements Interceptor {
                         Method method = pds.getWriteMethod();
                         if (method != null) {
                             Random r = new Random();
+                            //todo
                             int i = r.nextInt(1000);
                             method.invoke(paramObj, i);
                             System.out.println(paramObj);
