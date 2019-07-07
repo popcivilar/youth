@@ -2,12 +2,12 @@ package com.popcivilar.youth.general.user.web;
 
 
 import com.popcivilar.youth.general.user.entity.UserInfo;
+import com.popcivilar.youth.general.user.entity.UserInfoDto;
 import com.popcivilar.youth.general.user.service.UserInfoService;
 import com.popcivilar.youth.youthbase.base.controller.BaseController;
 import com.popcivilar.youth.youthbase.base.entity.ModuleReturn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/user")
-public class UserController extends BaseController<UserInfo,UserInfoService> {
+public class UserController extends BaseController<UserInfo, UserInfoDto,UserInfoService> {
 
 
     @Autowired

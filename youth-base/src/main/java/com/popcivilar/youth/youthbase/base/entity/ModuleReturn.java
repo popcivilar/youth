@@ -45,6 +45,10 @@ public class ModuleReturn<T> implements Serializable {
         return new ModuleReturn("500",returnMsg);
     }
 
+    public boolean isSuccess(){
+        return this.code.equals("200");
+    }
+
     public String getCode() {
         return code;
     }
