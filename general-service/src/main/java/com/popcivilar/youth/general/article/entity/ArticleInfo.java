@@ -50,6 +50,12 @@ public class ArticleInfo extends EntityBean<Integer> implements Serializable {
     private String type;
 
     /**
+     * 博文类别
+
+     */
+    @Column(name = "TYPE_ID")
+    private Integer typeId;
+    /**
      * 博文内容
             
      */
@@ -168,6 +174,14 @@ public class ArticleInfo extends EntityBean<Integer> implements Serializable {
 
     public void setDeletedFlag(String deletedFlag) {
         this.deletedFlag = deletedFlag == null ? null : deletedFlag.trim();
+    }
+
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public Date getCreateDate() {
