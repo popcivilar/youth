@@ -6,6 +6,7 @@
     <artifactId>youth-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>youth-parent</name>
+    <packaging>pom</packaging>
     <description>youth-parent Spring Boot</description>
 
     <!--版本管理  -->
@@ -28,6 +29,11 @@
         <tk.mapper.version>4.0.3</tk.mapper.version>
         <hutools.version>3.3.2</hutools.version>
     </properties>
+
+    <modules>
+        <module>general-service</module>
+        <module>youth-base</module>
+    </modules>
 
     <!--此处填写的依赖，子类强制继承 -->
     <dependencies>
