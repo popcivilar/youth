@@ -1,4 +1,4 @@
-package com.popcivilar.youth.youthbase.secuirty;
+package com.popcivilar.youth.youthbase.token;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

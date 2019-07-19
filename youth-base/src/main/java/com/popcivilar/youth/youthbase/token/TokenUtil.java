@@ -1,4 +1,4 @@
-package com.popcivilar.youth.youthbase.secuirty;
+package com.popcivilar.youth.youthbase.token;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
@@ -11,13 +11,13 @@ import java.security.Key;
 import java.util.Date;
 
 /**
- * @ClassName TokenConfig
+ * @ClassName TokenUtil
  * @Description TODO
  * @Author neusoft
  * @Date 2019/7/18 17:28
  * @Version 1.0
  **/
-public class TokenConfig {
+public class TokenUtil {
 
 
 
@@ -91,8 +91,8 @@ public class TokenConfig {
 
     public static void main(String[] args) {
         String key = "123";
-        String jwtToken = TokenConfig.createJwtToken(key);
-        Claims claims = TokenConfig.parseJWT(jwtToken);
+        String jwtToken = TokenUtil.createJwtToken(key);
+        Claims claims = TokenUtil.parseJWT(jwtToken);
         System.out.println(1);
     }
 }
