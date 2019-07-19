@@ -1,9 +1,12 @@
-package com.popcivilar.youth.youthbase.secuirty;
+package com.popcivilar.youth.general.secruity;
 
+import com.popcivilar.youth.general.user.dao.UserInfoMapper;
+import com.popcivilar.youth.general.user.entity.UserInfo;
+import com.popcivilar.youth.youthbase.token.TokenPass;
+import com.popcivilar.youth.youthbase.token.TokenUtil;
 import com.popcivilar.youth.youthbase.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -13,12 +16,15 @@ import java.lang.reflect.Method;
 
 /**
  * @ClassName AuthenticationInterceptor
- * @Description TODO
+ * @Description 安全拦截器
  * @Author zhagnch
  * @Date 2019/7/18 18:18
  * @Version 1.0
  **/
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
+
+    @Autowired
+    private UserInfoMapper userInfoMapper;
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
@@ -43,22 +49,16 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         }
         // 获取 token 中的 user id
         String userId;
-//        try {
-//            userId = JWT.decode(token).getAudience().get(0);
-//        } catch (JWTDecodeException j) {
-//            throw new RuntimeException("401");
-//        }
-//        User user = userService.findUserById(userId);
-//        if (user == null) {
-//            throw new RuntimeException("用户不存在，请重新登录");
-//        }
-//        // 验证 token
-//        JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getPassword())).build();
-//        try {
-//            jwtVerifier.verify(token);
-//        } catch (JWTVerificationException e) {
-//            throw new RuntimeException("401");
-//        }
+        try {
+            userId = TokenUtil.parseJWT(token).getId();
+        } catch (Exception j) {
+            throw new RuntimeException("401");
+        }
+        UserInfo user = userInfoMapper.selectByPrimaryKey(userId);
+        if (user == null) {
+            throw new RuntimeException("用户不存在，请重新登录");
+        }
+
 
         return true;
     }

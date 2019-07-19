@@ -1,6 +1,7 @@
 package com.popcivilar.youth.youthbase.exception;
 
 import com.popcivilar.youth.youthbase.base.entity.ModuleReturn;
+import com.popcivilar.youth.youthbase.token.TokenPass;
 import com.popcivilar.youth.youthbase.utils.StringUtil;
 import com.xiaoleilu.hutool.util.ObjectUtil;
 import org.slf4j.Logger;
