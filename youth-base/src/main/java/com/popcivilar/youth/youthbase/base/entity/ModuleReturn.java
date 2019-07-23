@@ -40,9 +40,12 @@ public class ModuleReturn<T> implements Serializable {
     public static <T> ModuleReturn<T> fail(String returnMsg){
         return new ModuleReturn("500",returnMsg);
     }
+    public static <T> ModuleReturn<T> fail(String code,T data,String returnMsg){
+        return new ModuleReturn(code,data,returnMsg);
+    }
 
-    public static <T> ModuleReturn<T> fail(T data,String returnMsg){
-        return new ModuleReturn("500",returnMsg);
+    public static <T> ModuleReturn<T> fail(String code,String returnMsg){
+        return new ModuleReturn(code,returnMsg);
     }
 
     public boolean isSuccess(){

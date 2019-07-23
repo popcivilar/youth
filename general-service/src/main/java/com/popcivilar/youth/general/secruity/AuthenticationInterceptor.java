@@ -2,9 +2,13 @@ package com.popcivilar.youth.general.secruity;
 
 import com.popcivilar.youth.general.user.dao.UserInfoMapper;
 import com.popcivilar.youth.general.user.entity.UserInfo;
+import com.popcivilar.youth.youthbase.exception.BusinessException;
+import com.popcivilar.youth.youthbase.exception.TokenException;
 import com.popcivilar.youth.youthbase.token.TokenPass;
 import com.popcivilar.youth.youthbase.token.TokenUtil;
 import com.popcivilar.youth.youthbase.utils.StringUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,6 +17,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * @ClassName AuthenticationInterceptor
@@ -23,11 +28,18 @@ import java.lang.reflect.Method;
  **/
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 
+    private static Logger logger = LoggerFactory.getLogger(AuthenticationInterceptor.class);
+
     @Autowired
     private UserInfoMapper userInfoMapper;
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
+
+        String serverName = httpServletRequest.getServerName();//服务器地址
+//        if(serverName != null && !serverName.contains("admin")){//非后台页面
+//            return true;
+//        }
         String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
         // 如果不是映射到方法直接通过
         if (!(object instanceof HandlerMethod)) {
@@ -45,18 +57,22 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         //检查其他方法有无Token
             // 执行认证
         if (StringUtil.isNullOrEmpty(token)) {
-            throw new RuntimeException("无token，请重新登录");
+            throw new TokenException("无token，请重新登录");
         }
-        // 获取 token 中的 user id
-        String userId;
+        // 获取 token 中的 user userCode
+        String userCode;
         try {
-            userId = TokenUtil.parseJWT(token).getId();
+            userCode = TokenUtil.parseJWT(token).getId();
         } catch (Exception j) {
-            throw new RuntimeException("401");
+            throw new TokenException("401");
         }
-        UserInfo user = userInfoMapper.selectByPrimaryKey(userId);
-        if (user == null) {
-            throw new RuntimeException("用户不存在，请重新登录");
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserCode(userCode);
+        List<UserInfo> userInfoList = userInfoMapper.select(userInfo);
+        if(userInfoList != null && !userInfoList.isEmpty()){
+            logger.info("用户权限验证通过，验证用户{}",userCode);
+        }else{
+            throw new TokenException("用户不存在，请重新登录");
         }
 
 

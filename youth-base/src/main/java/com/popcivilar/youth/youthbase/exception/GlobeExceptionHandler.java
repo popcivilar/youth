@@ -20,6 +20,23 @@ public class GlobeExceptionHandler {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+
+    @ExceptionHandler(value = TokenException.class)
+    public ModuleReturn exceptionTokenHanlder(HttpServletRequest req, HttpServletResponse res, Exception e) {
+        doLogger(req, res, e);
+        logger.error(e.getMessage());
+        String returnMsg = e.getMessage();
+        // 当某些提示信息过长的时候  截取一下
+        if(StringUtil.isNotNullOrEmpty(returnMsg)){
+            if(returnMsg.length() > 200){
+                returnMsg = returnMsg.substring(0, 200)+"...";
+            }
+        }
+        return ModuleReturn.fail("401",returnMsg);
+    }
+
+
+
     @ExceptionHandler(value = Exception.class)
     public ModuleReturn exceptionHanlder(HttpServletRequest req, HttpServletResponse res, Exception e) {
         doLogger(req, res, e);

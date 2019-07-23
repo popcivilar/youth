@@ -24,7 +24,7 @@ public class TokenUtil {
     /**
      * 签名秘钥
      */
-    public static final String SECRET = "admin";
+    public static final String SECRET = "youthBlog";
 
     /**
      * 生成token
@@ -33,8 +33,8 @@ public class TokenUtil {
      * @return
      */
     public static String createJwtToken(String id) {
-        String issuer = "www.xxxx.com";  //签发方
-        String subject = "xxxx@126.com"; //主题
+        String issuer = "popcivilar";  //签发方
+        String subject = "loginTokenInfo"; //主题
         long ttlMillis = 3600000; //过期时间
         return createJwtToken(id, issuer, subject, ttlMillis);
     }
@@ -90,8 +90,9 @@ public class TokenUtil {
     }
 
     public static void main(String[] args) {
-        String key = "123";
+        String key = "zc";
         String jwtToken = TokenUtil.createJwtToken(key);
+        System.out.println(jwtToken);
         Claims claims = TokenUtil.parseJWT(jwtToken);
         System.out.println(1);
     }
