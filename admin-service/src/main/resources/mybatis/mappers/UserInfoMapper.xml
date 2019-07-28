@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.popcivilar.youth.admin.user.dao.UserInfoMapper" >
+
+    <resultMap id="BaseResultMap" type="com.popcivilar.youth.admin.user.entity.UserInfo" >
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="USER_IP_ADDR" property="userIpAddr" jdbcType="VARCHAR" />
+        <result column="USER_CODE" property="userCode" jdbcType="VARCHAR" />
+        <result column="NICK_NAME" property="nickName" jdbcType="VARCHAR" />
+        <result column="USER_PWD" property="userPwd" jdbcType="VARCHAR" />
+        <result column="USER_MAIL" property="userMail" jdbcType="VARCHAR" />
+        <result column="USER_HEAD" property="userHead" jdbcType="VARCHAR" />
+        <result column="USER_BIRTH" property="userBirth" jdbcType="DATE" />
+        <result column="USER_PHONE" property="userPhone" jdbcType="INTEGER" />
+        <result column="USER_LEVEL" property="userLevel" jdbcType="INTEGER" />
+        <result column="CREATE_DATE" property="createDate" jdbcType="DATE" />
+        <result column="MODIFY_DATE" property="modifyDate" jdbcType="DATE" />
+        <result column="DELETED_FLAG" property="deletedFlag" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+    <sql id="Base_Column_List" >
+        ID, USER_IP_ADDR, USER_CODE, NICK_NAME, USER_PWD, USER_MAIL, USER_HEAD, USER_BIRTH,
+        USER_PHONE, USER_LEVEL, CREATE_DATE, MODIFY_DATE,deletedFlag
+    </sql>
+
+</mapper>

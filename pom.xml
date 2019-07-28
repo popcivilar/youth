@@ -28,6 +28,7 @@
         <github.pagehelper.version>5.1.8</github.pagehelper.version>
         <tk.mapper.version>4.0.3</tk.mapper.version>
         <hutools.version>3.3.2</hutools.version>
+        <flywaydb.version>3.2.1</flywaydb.version>
     </properties>
 
     <modules>
@@ -138,6 +139,12 @@
                 <groupId>com.xiaoleilu</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutools.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>${flywaydb.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

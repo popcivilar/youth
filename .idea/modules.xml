@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/admin-service/admin-service.iml" filepath="$PROJECT_DIR$/admin-service/admin-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/general-service/general-service.iml" filepath="$PROJECT_DIR$/general-service/general-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/youth-base/youth-base.iml" filepath="$PROJECT_DIR$/youth-base/youth-base.iml" />
