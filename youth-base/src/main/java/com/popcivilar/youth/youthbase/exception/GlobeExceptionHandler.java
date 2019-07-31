@@ -32,7 +32,7 @@ public class GlobeExceptionHandler {
                 returnMsg = returnMsg.substring(0, 200)+"...";
             }
         }
-        return ModuleReturn.fail("401",returnMsg);
+        return ModuleReturn.fail("401",null,returnMsg);
     }
 
 

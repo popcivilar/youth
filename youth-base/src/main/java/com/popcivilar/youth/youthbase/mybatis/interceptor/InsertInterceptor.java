@@ -1,30 +1,34 @@
 package com.popcivilar.youth.youthbase.mybatis.interceptor;
 
+import com.popcivilar.youth.youthbase.mybatis.keygen.KeyGentor;
 import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.plugin.*;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.util.Properties;
-import java.util.Random;
 
 /**
  * @desc 用于设置插入的ID
  * @author
  */
-@Component
-@Intercepts(  {
-        @Signature(method = "prepare", type = StatementHandler.class, args = { Connection.class,Integer.class })
-})
+//@Component
+//@Intercepts(  {
+//        @Signature(method = "prepare", type = StatementHandler.class, args = { Connection.class,Integer.class })
+//})
 public class InsertInterceptor implements Interceptor {
 
     private org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @Autowired
+    KeyGentor keyGentor;
 
     public Object intercept(Invocation invocation) throws Throwable {
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
@@ -40,10 +44,7 @@ public class InsertInterceptor implements Interceptor {
                     if (o == null) { // 没有主键的时候  就生成id
                         Method method = pds.getWriteMethod();
                         if (method != null) {
-                            Random r = new Random();
-                            //todo
-                            int i = r.nextInt(1000);
-                            method.invoke(paramObj, i);
+                            method.invoke(paramObj, keyGentor.getId());
                             System.out.println(paramObj);
                         }
                     }

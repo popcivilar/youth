@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.popcivilar.youth.admin.type.dao.TypeInfoMapper" >
+
+    <resultMap id="BaseResultMap" type="com.popcivilar.youth.admin.type.entity.TypeInfo" >
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="TYPE_NAME" property="typeName" jdbcType="VARCHAR" />
+        <result column="TYPE_DESC" property="typeDesc" jdbcType="VARCHAR" />
+        <result column="PARTENT_ID" property="partentId" jdbcType="INTEGER" />
+        <result column="DELETED_FLAG" property="deletedFlag" jdbcType="VARCHAR" />
+        <result column="CREATE_DATE" property="createDate" jdbcType="DATE" />
+        <result column="MODIFY_DATE" property="modifyDate" jdbcType="DATE" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        ID, TYPE_NAME, TYPE_DESC, PARTENT_ID, DELETED_FLAG, CREATE_DATE, MODIFY_DATE
+    </sql>
+
+</mapper>

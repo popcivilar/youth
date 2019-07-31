@@ -17,10 +17,10 @@ import java.util.Properties;
  * @desc 拦截器
  * @author
  */
-@Configuration
+//@Configuration
 public class MybatisConfig  {
 
-    @Bean
+//    @Bean
     public String myInterceptor(SqlSessionFactory sqlSessionFactory) {
         InsertInterceptor executorInterceptor = new InsertInterceptor();
         Properties properties = new Properties();

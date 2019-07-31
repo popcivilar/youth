@@ -38,7 +38,7 @@ public class ModuleReturn<T> implements Serializable {
     }
 
     public static <T> ModuleReturn<T> fail(String returnMsg){
-        return new ModuleReturn("500",returnMsg);
+        return new ModuleReturn("500",null,returnMsg);
     }
     public static <T> ModuleReturn<T> fail(String code,T data,String returnMsg){
         return new ModuleReturn(code,data,returnMsg);

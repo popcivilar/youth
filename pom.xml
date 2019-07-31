@@ -29,6 +29,8 @@
         <tk.mapper.version>4.0.3</tk.mapper.version>
         <hutools.version>3.3.2</hutools.version>
         <flywaydb.version>3.2.1</flywaydb.version>
+        <pagehelper.version>1.1.2</pagehelper.version>
+        <github.pagehelper.version>5.1.8</github.pagehelper.version>
     </properties>
 
     <modules>
@@ -145,6 +147,18 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-core</artifactId>
                 <version>${flywaydb.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${github.pagehelper.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

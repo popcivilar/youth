@@ -1,5 +1,7 @@
 package com.popcivilar.youth.youthbase.base.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import javax.persistence.Column;
 import java.io.Serializable;
 import java.util.Date;
@@ -18,9 +20,11 @@ public abstract class EntityBean<K extends Serializable> implements
 	@Column(name = "DELETED_FLAG")
 	private String deletedFlag;
 
+	@JSONField(format="yyyy-MM-dd HH:mm:ss")
 	@Column(name = "CREATE_DATE")
 	private Date createDate;
 
+	@JSONField(format="yyyy-MM-dd HH:mm:ss")
 	@Column(name = "MODIFY_DATE")
 	private Date modifyDate;
 

@@ -1,8 +1,8 @@
 package com.popcivilar.youth.admin.secruity;
 
 
-import com.popcivilar.youth.admin.user.entity.UserInfo;
-import com.popcivilar.youth.admin.user.dao.UserInfoMapper;
+import com.popcivilar.youth.admin.userInfo.entity.UserInfo;
+import com.popcivilar.youth.admin.userInfo.dao.UserInfoMapper;
 import com.popcivilar.youth.youthbase.exception.TokenException;
 import com.popcivilar.youth.youthbase.token.TokenPass;
 import com.popcivilar.youth.youthbase.token.TokenUtil;
@@ -57,7 +57,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         if (StringUtil.isNullOrEmpty(token)) {
             throw new TokenException("无token，请重新登录");
         }
-        // 获取 token 中的 user userCode
+        // 获取 token 中的 userInfo userCode
         String userCode;
         try {
             userCode = TokenUtil.parseJWT(token).getId();

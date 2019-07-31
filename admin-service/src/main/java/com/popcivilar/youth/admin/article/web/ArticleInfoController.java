@@ -4,16 +4,13 @@ package com.popcivilar.youth.admin.article.web;
 import com.popcivilar.youth.admin.article.entity.ArticleInfo;
 import com.popcivilar.youth.admin.article.entity.ArticleInfoDto;
 import com.popcivilar.youth.admin.article.service.ArticleInfoService;
-import com.popcivilar.youth.admin.user.entity.UserInfo;
-import com.popcivilar.youth.admin.user.service.UserInfoService;
+import com.popcivilar.youth.admin.userInfo.entity.UserInfo;
+import com.popcivilar.youth.admin.userInfo.service.UserInfoService;
 import com.popcivilar.youth.youthbase.base.controller.BaseController;
 import com.popcivilar.youth.youthbase.base.entity.ModuleReturn;
 import com.popcivilar.youth.youthbase.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/articleInfo")
@@ -37,6 +34,21 @@ public class ArticleInfoController extends BaseController<ArticleInfo,ArticleInf
                 moduleReturn.getData().setUserInfo(userInfo);
             }
         }
+        return moduleReturn;
+    }
+
+    /**
+     * 文章保存
+     * @param articleInfoDto
+     * @return
+     */
+    @PostMapping(value = "/save")
+    public ModuleReturn<ArticleInfoDto> save(ArticleInfoDto articleInfoDto){
+
+        ModuleReturn<ArticleInfoDto> moduleReturn = ModuleReturn.success();
+
+
+
         return moduleReturn;
     }
 

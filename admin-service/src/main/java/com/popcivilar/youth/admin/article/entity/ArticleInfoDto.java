@@ -1,10 +1,7 @@
 package com.popcivilar.youth.admin.article.entity;
 
-import com.popcivilar.youth.admin.user.entity.UserInfo;
+import com.popcivilar.youth.admin.userInfo.entity.UserInfo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.Date;
 
 /**

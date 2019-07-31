@@ -31,7 +31,7 @@ public class UserController extends BaseController<UserInfo, UserInfoDto,UserInf
     public ModuleReturn getInfo(){
         userInfoService.sayHello();
         UserInfo userInfo = userInfoService.selectByPrimaryKey("1");
-        redisTemplate.opsForValue().set("user",userInfo);
+        redisTemplate.opsForValue().set("userInfo",userInfo);
         ModuleReturn<UserInfo> success = ModuleReturn.success(userInfo);
         return success;
     }

@@ -1,10 +1,5 @@
-package com.popcivilar.youth.admin.user.entity;
+package com.popcivilar.youth.admin.userInfo.entity;
 
-import com.popcivilar.youth.youthbase.base.entity.EntityBean;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,83 +9,72 @@ import java.util.Date;
  *
  * @date 2019-06-30
  */
-@Table(name = "user_info")
-public class UserInfo extends EntityBean<Integer> implements Serializable {
-    @Id
-    @Column(name = "ID")
+public class UserInfoDto implements Serializable {
     private Integer id;
 
     /**
      * 用户IP地址
             
      */
-    @Column(name = "USER_IP_ADDR")
     private String userIpAddr;
 
     /**
      * 用户名
             
      */
-    @Column(name = "USER_CODE")
     private String userCode;
 
     /**
      * 用户昵称
             
      */
-    @Column(name = "NICK_NAME")
     private String nickName;
 
     /**
      * 用户密码
             
      */
-    @Column(name = "USER_PWD")
     private String userPwd;
 
     /**
      * 用户邮箱
             
      */
-    @Column(name = "USER_MAIL")
     private String userMail;
 
     /**
      * 用户头像
             
      */
-    @Column(name = "USER_HEAD")
     private String userHead;
 
     /**
      * 用户生日
             
      */
-    @Column(name = "USER_BIRTH")
     private Date userBirth;
 
     /**
      * 用户手机号
             
      */
-    @Column(name = "USER_PHONE")
     private Integer userPhone;
 
     /**
      * 用户等级
             
      */
-    @Column(name = "USER_LEVEL")
     private Integer userLevel;
 
-    @Column(name = "CREATE_DATE")
     private Date createDate;
 
-    @Column(name = "MODIFY_DATE")
     private Date modifyDate;
 
-    @Column(name = "DELETED_FLAG")
     private String deletedFlag;
+
+    private String token;
+
+    private String oldPassword;//原密码
 
     public Integer getId() {
         return id;
@@ -188,17 +172,23 @@ public class UserInfo extends EntityBean<Integer> implements Serializable {
         this.modifyDate = modifyDate;
     }
 
-    @Override
-    public String getDeletedFlag() {
-        return deletedFlag;
+    public String getToken() {
+        return token;
     }
 
-    @Override
-    public void setDeletedFlag(String deletedFlag) {
-        this.deletedFlag = deletedFlag;
+    public void setToken(String token) {
+        this.token = token;
     }
 
-    @Override
+
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
+    }
+
     public String toString() {
         return "UserInfo{" +
                 "id=" + id +

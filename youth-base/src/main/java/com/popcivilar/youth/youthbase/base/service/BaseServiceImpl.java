@@ -3,6 +3,8 @@ package com.popcivilar.youth.youthbase.base.service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.popcivilar.youth.youthbase.base.entity.EntityBean;
+import com.popcivilar.youth.youthbase.base.entity.UniPage;
+import com.popcivilar.youth.youthbase.base.entity.UniParam;
 import com.popcivilar.youth.youthbase.base.mapper.BaseMapper;
 import com.popcivilar.youth.youthbase.exception.BusinessException;
 import org.apache.ibatis.session.RowBounds;
@@ -153,5 +155,12 @@ public class BaseServiceImpl<T extends EntityBean> implements BaseService<T> {
 
     public T selectOneByExample(Object o) {
         return null;
+    }
+
+
+    public UniPage list(UniParam<T> uniParam) {
+        T t = uniParam.getInParam();
+        Page<T> page = this.selectPage(t, uniParam.getPage(), uniParam.getPageSize());
+        return new UniPage(page);
     }
 }

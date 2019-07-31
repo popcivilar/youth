@@ -1,8 +1,8 @@
-package com.popcivilar.youth.admin.user.service.impl;
+package com.popcivilar.youth.admin.userInfo.service.impl;
 
-import com.popcivilar.youth.admin.user.entity.UserInfo;
-import com.popcivilar.youth.admin.user.service.UserInfoService;
-import com.popcivilar.youth.admin.user.dao.UserInfoMapper;
+import com.popcivilar.youth.admin.userInfo.dao.UserInfoMapper;
+import com.popcivilar.youth.admin.userInfo.entity.UserInfo;
+import com.popcivilar.youth.admin.userInfo.service.UserInfoService;
 import com.popcivilar.youth.youthbase.base.service.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,4 +20,11 @@ public class UserInfoServiceImpl extends BaseServiceImpl<UserInfo> implements Us
         return userInfoMapper.selectByPrimaryKey("1").toString();
     }
 
+
+    @Override
+    public UserInfo login(UserInfo userInfo) {
+        userInfo.setDeletedFlag("0");
+        userInfo = userInfoMapper.selectOne(userInfo);
+        return userInfo;
+    }
 }
