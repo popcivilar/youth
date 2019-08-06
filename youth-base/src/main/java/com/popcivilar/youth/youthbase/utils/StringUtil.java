@@ -1,5 +1,6 @@
 package com.popcivilar.youth.youthbase.utils;
 
+import com.xiaoleilu.hutool.bean.BeanUtil;
 import com.xiaoleilu.hutool.util.ObjectUtil;
 
 import java.io.BufferedReader;
@@ -131,6 +132,16 @@ public class StringUtil {
 		} else {
 			return (new StringBuffer()).append(Character.toUpperCase(s.charAt(0))).append(s.substring(1)).toString();
 		}
+	}
+
+	// 将javabean实体类转为map类型，然后返回一个map类型的值
+	public static Map<String, Object> beanToMap(Object obj) {
+		return BeanUtil.beanToMap(obj);
+	}
+
+	// 将map类型转为javabean实体类，然后返回一个map类型的值
+	public static <T> T mapToBean(Map<String, Object> source, Class<T> target) {
+		return BeanUtil.mapToBean(source, target, true);
 	}
 
 	/**

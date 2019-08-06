@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.popcivilar.youth.admin.comment.dao.CommentInfoMapper" >
+
+    <resultMap id="BaseResultMap" type="com.popcivilar.youth.admin.comment.entity.CommentInfo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="ARTICLE_ID" property="articleId" jdbcType="INTEGER" />
+        <result column="COMMENT_DATE" property="commentDate" jdbcType="DATE" />
+        <result column="THUNB_NUM" property="thunbNum" jdbcType="INTEGER" />
+        <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+        <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+        <result column="COMMENT_NUM" property="commentNum" jdbcType="INTEGER" />
+        <result column="PARTENT_ID" property="partentId" jdbcType="INTEGER" />
+        <result column="DELETED_FLAG" property="deletedFlag" jdbcType="VARCHAR" />
+        <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />
+        <result column="USER_CODE" property="userCode" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, ARTICLE_ID, COMMENT_DATE, THUNB_NUM, USER_ID, CONTENT, COMMENT_NUM, PARTENT_ID, 
+        DELETED_FLAG, CREATE_DATE, MODIFY_DATE, USER_CODE
+    </sql>
+
+</mapper>

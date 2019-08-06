@@ -90,11 +90,8 @@ public class ArticleInfo extends EntityBean<Integer> implements Serializable {
     @Column(name = "DELETED_FLAG")
     private String deletedFlag;
 
-    @Column(name = "CREATE_DATE")
-    private Date createDate;
-
-    @Column(name = "MODIFY_DATE")
-    private Date modifyDate;
+    @Column(name="MARKDOWN_CONTENT")
+    private String markdownContent;
 
     public Integer getId() {
         return id;
@@ -184,19 +181,11 @@ public class ArticleInfo extends EntityBean<Integer> implements Serializable {
         this.typeId = typeId;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public String getMarkdownContent() {
+        return markdownContent;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getModifyDate() {
-        return modifyDate;
-    }
-
-    public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
+    public void setMarkdownContent(String markdownContent) {
+        this.markdownContent = markdownContent;
     }
 }

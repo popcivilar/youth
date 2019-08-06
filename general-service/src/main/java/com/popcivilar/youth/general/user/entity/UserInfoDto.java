@@ -58,7 +58,7 @@ public class UserInfoDto implements Serializable {
      * 用户手机号
             
      */
-    private Integer userPhone;
+    private String userPhone;
 
     /**
      * 用户等级
@@ -136,11 +136,11 @@ public class UserInfoDto implements Serializable {
         this.userBirth = userBirth;
     }
 
-    public Integer getUserPhone() {
+    public String getUserPhone() {
         return userPhone;
     }
 
-    public void setUserPhone(Integer userPhone) {
+    public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
     }
 

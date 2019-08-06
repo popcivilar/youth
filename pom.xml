@@ -36,6 +36,8 @@
     <modules>
         <module>general-service</module>
         <module>youth-base</module>
+        <module>admin-service</module>
+
     </modules>
 
     <!--此处填写的依赖，子类强制继承 -->

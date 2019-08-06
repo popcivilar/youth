@@ -2,6 +2,7 @@ package com.popcivilar.youth.youthbase.base.controller;
 
 import com.popcivilar.youth.youthbase.base.entity.EntityBean;
 import com.popcivilar.youth.youthbase.base.entity.ModuleReturn;
+import com.popcivilar.youth.youthbase.base.entity.UniPage;
 import com.popcivilar.youth.youthbase.base.entity.UniParam;
 import com.popcivilar.youth.youthbase.base.service.BaseService;
 import com.popcivilar.youth.youthbase.exception.FrameException;
@@ -136,6 +137,30 @@ public class BaseController<T extends EntityBean<Integer>,DTO,SERVICE extends Ba
         DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
         // / CustomDateEditor为自定义日期编辑器
+    }
+
+//    @InitBinder
+//    protected void initBinder(WebDataBinder binder) {
+//        binder.registerCustomEditor(Date.class, new PropertyEditorSupport() {
+//            @Override
+//            public void setAsText(String value) {
+//                setValue(new Date(Long.valueOf(value)));
+//            }
+//        });
+//
+//    }
+
+    /**
+     *
+     * @param req
+     * @param t
+     * @return
+     */
+    @GetMapping("/list")
+    public UniPage list(HttpServletRequest req, T t) {
+        t.setDeletedFlag("0");
+        UniParam<T> uniParam = this.initUniParam(req, t);
+        return service.list(uniParam);
     }
 
 }

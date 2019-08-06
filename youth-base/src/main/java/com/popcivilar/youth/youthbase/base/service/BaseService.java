@@ -50,5 +50,6 @@ public interface BaseService<T extends EntityBean> extends Mapper<T>, IdsMapper<
 
 
     UniPage list(UniParam<T> uniParam);
+
 }
 

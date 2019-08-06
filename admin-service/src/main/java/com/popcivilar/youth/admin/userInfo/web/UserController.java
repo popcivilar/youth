@@ -12,10 +12,7 @@ import com.popcivilar.youth.youthbase.utils.ResUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -45,6 +42,27 @@ public class UserController extends BaseController<UserInfo, UserInfoDto,UserInf
         return success;
     }
 
+
+    /**
+     * 新增or修改
+     * @param userInfoDto
+     * @return
+     */
+    @PostMapping("/save")
+    public ModuleReturn<UserInfoDto> save(UserInfoDto userInfoDto){
+        ModuleReturn<UserInfoDto> moduleReturn = ModuleReturn.success();
+        UserInfo userInfo = new UserInfo();
+        BeanUtils.copyProperties(userInfoDto,userInfo);
+        if(userInfoDto.getId() == null || userInfoDto.getId() == -1){
+            //新增
+            this.initalBean(userInfo);
+            userInfoService.insertSelective(userInfo);
+        }else{
+            //更新
+            userInfoService.updateByPrimaryKeySelective(userInfo);
+        }
+        return moduleReturn;
+    }
 
     /**
      * 获取Session中登录用户

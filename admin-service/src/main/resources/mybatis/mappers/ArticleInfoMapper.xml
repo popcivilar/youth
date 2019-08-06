@@ -8,6 +8,24 @@
         <result column="USER_ID" property="userId" jdbcType="INTEGER" />
         <result column="TITLE" property="title" jdbcType="VARCHAR" />
         <result column="TYPE" property="type" jdbcType="VARCHAR" />
+        <result column="TYPE_ID" property="typeId" jdbcType="INTEGER" />
+        <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+        <result column="THUMB_NUM" property="thumbNum" jdbcType="INTEGER" />
+        <result column="COMMENT_NUM" property="commentNum" jdbcType="INTEGER" />
+        <result column="READ_NUM" property="readNum" jdbcType="INTEGER" />
+        <result column="DELETED_FLAG" property="deletedFlag" jdbcType="VARCHAR" />
+        <result column="CREATE_DATE" property="createDate" jdbcType="DATE" />
+        <result column="MODIFY_DATE" property="modifyDate" jdbcType="DATE" />
+    </resultMap>
+
+    <resultMap id="BaseResultDtoMap" type="com.popcivilar.youth.admin.article.entity.ArticleInfoDto" >
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="PUB_DATE" property="pubDate" jdbcType="DATE" />
+        <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+        <result column="USER_CODE" property="userCode" jdbcType="VARCHAR" />
+        <result column="TITLE" property="title" jdbcType="VARCHAR" />
+        <result column="TYPE" property="type" jdbcType="VARCHAR" />
+        <result column="TYPE_ID" property="typeId" jdbcType="INTEGER" />
         <result column="CONTENT" property="content" jdbcType="VARCHAR" />
         <result column="THUMB_NUM" property="thumbNum" jdbcType="INTEGER" />
         <result column="COMMENT_NUM" property="commentNum" jdbcType="INTEGER" />
@@ -18,9 +36,21 @@
     </resultMap>
 
     <sql id="Base_Column_List" >
-        ID, PUB_DATE, USER_ID, TITLE, TYPE, CONTENT, THUMB_NUM, COMMENT_NUM, READ_NUM, DELETED_FLAG, 
+        ID, PUB_DATE, USER_ID, TITLE, TYPE, TYPE_ID,CONTENT, THUMB_NUM, COMMENT_NUM, READ_NUM, DELETED_FLAG,
         CREATE_DATE, MODIFY_DATE
     </sql>
 
+    <sql id="BaseSelectSql" >
+        SELECT A.ID, A.PUB_DATE, A.USER_ID, A.TITLE, A.TYPE, A.TYPE_ID,A.CONTENT, A.THUMB_NUM, A.COMMENT_NUM, A.READ_NUM, A.DELETED_FLAG,
+        A.CREATE_DATE, A.MODIFY_DATE ,B.USER_CODE FROM ARTICLE_INFO A LEFT JOIN USER_INFO B ON A.USER_ID = B.ID
+    </sql>
+
+    <select id="listByParam" resultMap="BaseResultDtoMap">
+        <include refid="BaseSelectSql" />
+        where a.deleted_Flag = '0'
+        <if test="param != null and param.inParam.keyword != null and param.inParam.keyword != ''">
+            and LOCATE(#{param.inParam.keyword},CONCAT(a.TITLE,a.TYPE)) > 0
+        </if>
+    </select>
 
 </mapper>

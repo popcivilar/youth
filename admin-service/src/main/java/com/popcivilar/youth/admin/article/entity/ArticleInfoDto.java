@@ -38,6 +38,8 @@ public class ArticleInfoDto {
      */
     private String type;
 
+    private Integer typeId;
+
     /**
      * 博文内容
             
@@ -73,6 +75,12 @@ public class ArticleInfoDto {
     private Date modifyDate;
 
     private UserInfo userInfo;//用户信息
+
+    private String markdownContent;
+
+    private String userCode;
+
+    private String keyword;//搜索关键词
 
     public Integer getId() {
         return id;
@@ -176,5 +184,37 @@ public class ArticleInfoDto {
 
     public void setUserInfo(UserInfo userInfo) {
         this.userInfo = userInfo;
+    }
+
+    public String getMarkdownContent() {
+        return markdownContent;
+    }
+
+    public void setMarkdownContent(String markdownContent) {
+        this.markdownContent = markdownContent;
+    }
+
+    public String getUserCode() {
+        return userCode;
+    }
+
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
+    }
+
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 }

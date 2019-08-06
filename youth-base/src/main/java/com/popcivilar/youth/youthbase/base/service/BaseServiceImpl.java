@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.List;
 
 public class BaseServiceImpl<T extends EntityBean> implements BaseService<T> {
@@ -94,6 +95,7 @@ public class BaseServiceImpl<T extends EntityBean> implements BaseService<T> {
     }
 
     public int updateByPrimaryKeySelective(T t) {
+        t.setModifyDate(new Date());
         return mapper.updateByPrimaryKeySelective(t);
     }
 
@@ -163,4 +165,5 @@ public class BaseServiceImpl<T extends EntityBean> implements BaseService<T> {
         Page<T> page = this.selectPage(t, uniParam.getPage(), uniParam.getPageSize());
         return new UniPage(page);
     }
+
 }

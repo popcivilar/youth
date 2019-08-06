@@ -11,7 +11,7 @@
         <result column="USER_MAIL" property="userMail" jdbcType="VARCHAR" />
         <result column="USER_HEAD" property="userHead" jdbcType="VARCHAR" />
         <result column="USER_BIRTH" property="userBirth" jdbcType="DATE" />
-        <result column="USER_PHONE" property="userPhone" jdbcType="INTEGER" />
+        <result column="USER_PHONE" property="userPhone" jdbcType="VARCHAR" />
         <result column="USER_LEVEL" property="userLevel" jdbcType="INTEGER" />
         <result column="CREATE_DATE" property="createDate" jdbcType="DATE" />
         <result column="MODIFY_DATE" property="modifyDate" jdbcType="DATE" />

@@ -74,7 +74,7 @@ public class UserInfo extends EntityBean<Integer> implements Serializable {
             
      */
     @Column(name = "USER_PHONE")
-    private Integer userPhone;
+    private String userPhone;
 
     /**
      * 用户等级
@@ -156,11 +156,11 @@ public class UserInfo extends EntityBean<Integer> implements Serializable {
         this.userBirth = userBirth;
     }
 
-    public Integer getUserPhone() {
+    public String getUserPhone() {
         return userPhone;
     }
 
-    public void setUserPhone(Integer userPhone) {
+    public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
     }
 

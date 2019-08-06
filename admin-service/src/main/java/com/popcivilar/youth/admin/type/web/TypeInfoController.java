@@ -51,17 +51,17 @@ public class TypeInfoController extends BaseController<TypeInfo, TypeInfoDto, Ty
     }
 
 
-    /**
-     *
-     * @param req
-     * @param typeInfo
-     * @return
-     */
-    @GetMapping("/list")
-    public UniPage selectUserInfoForLookup(HttpServletRequest req, TypeInfo typeInfo) {
-        typeInfo.setDeletedFlag("0");
-        UniParam<TypeInfo> uniParam = this.initUniParam(req, typeInfo);
-        return typeInfoService.list(uniParam);
-    }
+//    /**
+//     *
+//     * @param req
+//     * @param typeInfo
+//     * @return
+//     */
+//    @GetMapping("/list")
+//    public UniPage selectUserInfoForLookup(HttpServletRequest req, TypeInfo typeInfo) {
+//        typeInfo.setDeletedFlag("0");
+//        UniParam<TypeInfo> uniParam = this.initUniParam(req, typeInfo);
+//        return typeInfoService.list(uniParam);
+//    }
 
 }
