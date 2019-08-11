@@ -1,11 +1,14 @@
 package com.popcivilar.youth.general.article.entity;
 
+import com.popcivilar.youth.general.comment.entity.CommentInfoDto;
 import com.popcivilar.youth.general.user.entity.UserInfo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 文章信息
@@ -14,7 +17,7 @@ import java.util.Date;
  * 
  * @date 2019-07-07
  */
-public class ArticleInfoDto {
+public class ArticleInfoDto implements Serializable {
     private Integer id;
 
     /**
@@ -76,6 +79,12 @@ public class ArticleInfoDto {
     private Date modifyDate;
 
     private UserInfo userInfo;//用户信息
+
+    private ArticleInfoDto preArticle;//上一篇
+
+    private ArticleInfoDto nextArticle;//下一篇
+
+    private List<CommentInfoDto> commentInfoList;//评论信息
 
     public Integer getId() {
         return id;
@@ -179,5 +188,29 @@ public class ArticleInfoDto {
 
     public void setUserInfo(UserInfo userInfo) {
         this.userInfo = userInfo;
+    }
+
+    public List<CommentInfoDto> getCommentInfoList() {
+        return commentInfoList;
+    }
+
+    public void setCommentInfoList(List<CommentInfoDto> commentInfoList) {
+        this.commentInfoList = commentInfoList;
+    }
+
+    public ArticleInfoDto getPreArticle() {
+        return preArticle;
+    }
+
+    public void setPreArticle(ArticleInfoDto preArticle) {
+        this.preArticle = preArticle;
+    }
+
+    public ArticleInfoDto getNextArticle() {
+        return nextArticle;
+    }
+
+    public void setNextArticle(ArticleInfoDto nextArticle) {
+        this.nextArticle = nextArticle;
     }
 }

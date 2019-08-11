@@ -106,6 +106,7 @@ public class BaseController<T extends EntityBean<Integer>,DTO,SERVICE extends Ba
         }
         t.setDeletedFlag("0");
         t.setCreateDate(new Date());
+        t.setModifyDate(new Date());
         return t;
     }
 
@@ -161,6 +162,22 @@ public class BaseController<T extends EntityBean<Integer>,DTO,SERVICE extends Ba
         t.setDeletedFlag("0");
         UniParam<T> uniParam = this.initUniParam(req, t);
         return service.list(uniParam);
+    }
+
+
+    @RequestMapping(value="/save",method= RequestMethod.POST)
+    public  @ResponseBody
+    ModuleReturn<DTO> save(@RequestBody DTO dto){
+        ModuleReturn<DTO> result = ModuleReturn.success();
+        T entityBean = getEntityBean();
+        BeanUtils.copyProperties(dto,entityBean);
+        entityBean = initalBean(entityBean);
+        int insertNum = service.insertSelective(entityBean);
+        if(insertNum <= 0){
+            result.setCode(ResUtils.ERROR);
+            result.setReturnMsg("新增数据出错");
+        }
+        return result;
     }
 
 }

@@ -17,10 +17,54 @@
         <result column="MODIFY_DATE" property="modifyDate" jdbcType="DATE" />
     </resultMap>
 
+    <resultMap id="BaseDtoResultMap" type="com.popcivilar.youth.general.article.entity.ArticleInfoDto" >
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="PUB_DATE" property="pubDate" jdbcType="DATE" />
+        <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+        <result column="TITLE" property="title" jdbcType="VARCHAR" />
+        <result column="TYPE" property="type" jdbcType="VARCHAR" />
+        <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+        <result column="THUMB_NUM" property="thumbNum" jdbcType="INTEGER" />
+        <result column="COMMENT_NUM" property="commentNum" jdbcType="INTEGER" />
+        <result column="READ_NUM" property="readNum" jdbcType="INTEGER" />
+        <result column="DELETED_FLAG" property="deletedFlag" jdbcType="VARCHAR" />
+        <result column="CREATE_DATE" property="createDate" jdbcType="DATE" />
+        <result column="MODIFY_DATE" property="modifyDate" jdbcType="DATE" />
+    </resultMap>
+
+    <resultMap id="articleViewMap" type="com.popcivilar.youth.general.article.entity.ArticleView" >
+        <result column="TYPE_ID" property="typeId" jdbcType="INTEGER" />
+        <result column="TYPE_NAME" property="typeName" jdbcType="VARCHAR" />
+        <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+        <result column="USER_HEAD" property="userHead" jdbcType="VARCHAR" />
+        <result column="ARTICLE_ID" property="articleId" jdbcType="INTEGER" />
+        <result column="ARTICLE_NAME" property="articleName" jdbcType="VARCHAR" />
+        <result column="ARTICLE_ABSTRACT" property="articleAbstract" jdbcType="VARCHAR" />
+        <result column="PUB_DATE" property="pubDate" jdbcType="DATE" />
+    </resultMap>
+
     <sql id="Base_Column_List" >
-        ID, PUB_DATE, USER_ID, TITLE, TYPE, CONTENT, THUMB_NUM, COMMENT_NUM, READ_NUM, DELETED_FLAG, 
-        CREATE_DATE, MODIFY_DATE
+        SELECT ID, PUB_DATE, USER_ID, TITLE, TYPE, CONTENT, THUMB_NUM, COMMENT_NUM, READ_NUM, DELETED_FLAG,
+        CREATE_DATE, MODIFY_DATE FROM ARTICLE_INFO A
     </sql>
 
 
+    <select id="listView" resultMap="articleViewMap">
+        select TYPE_ID,TYPE_NAME,USER_ID,USER_NAME,USER_HEAD,ARTICLE_ID,ARTICLE_NAME,ARTICLE_ABSTRACT,PUB_DATE
+        from article_view
+    </select>
+
+    <select id="preArticle" resultMap="BaseDtoResultMap">
+        <include refid="Base_Column_List" />
+        where A.DELETED_FLAG = '0'
+        and a.id &lt; #{id} order by a.id desc limit 1
+    </select>
+
+
+    <select id="nextArticle" resultMap="BaseDtoResultMap">
+        <include refid="Base_Column_List" />
+        where A.DELETED_FLAG = '0'
+        and a.id &gt; #{id} order by a.id limit 1
+    </select>
 </mapper>
