@@ -3,6 +3,7 @@ package com.popcivilar.youth.general.article.web;
 
 import com.popcivilar.youth.general.article.entity.ArticleInfo;
 import com.popcivilar.youth.general.article.entity.ArticleInfoDto;
+import com.popcivilar.youth.general.article.entity.ArticleView;
 import com.popcivilar.youth.general.article.service.ArticleInfoService;
 import com.popcivilar.youth.general.comment.entity.CommentInfoDto;
 import com.popcivilar.youth.general.comment.service.CommentInfoService;
@@ -13,11 +14,13 @@ import com.popcivilar.youth.youthbase.base.entity.ModuleReturn;
 import com.popcivilar.youth.youthbase.base.entity.UniPage;
 import com.popcivilar.youth.youthbase.base.entity.UniParam;
 import com.popcivilar.youth.youthbase.utils.StringUtil;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -34,7 +37,6 @@ public class ArticleInfoController extends BaseController<ArticleInfo,ArticleInf
 
     @Autowired
     private CommentInfoService commentInfoService;
-
 
     @GetMapping(value = "/getArticleInfo/{id}")
     public ModuleReturn<ArticleInfoDto> getArticleInfo(@PathVariable("id") Integer id){
@@ -70,5 +72,13 @@ public class ArticleInfoController extends BaseController<ArticleInfo,ArticleInf
         UniParam<ArticleInfoDto> uniParam = super.initUniParam(request, articleInfoDto);
         return articleInfoService.listView(uniParam);
 
+    }
+
+
+    @PostMapping("/pRank")
+    public ModuleReturn pRank(ArticleInfoDto articleInfoDto){
+        ModuleReturn moduleReturn = ModuleReturn.success();
+        articleInfoService.putArticleRankindInRedis(articleInfoDto);
+        return moduleReturn;
     }
 }

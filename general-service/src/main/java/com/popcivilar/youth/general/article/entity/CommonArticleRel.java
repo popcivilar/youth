@@ -14,7 +14,7 @@ import java.util.List;
 public class CommonArticleRel {
 
     /**
-     * 点击排行
+     * 点击排行   文章表添加 点击数字段
      */
     private List<ArticleInfoDto> rankingList;
 

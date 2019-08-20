@@ -15,4 +15,7 @@ public interface CommentInfoService extends BaseService<CommentInfo> {
     UniPage listByParam(UniParam<CommentInfoDto> uniParam);
 
     ModuleReturn<List<CommentInfoDto>> getComment(CommentInfoDto articleInfoDto);
+
+    Integer countComment();
+
 }

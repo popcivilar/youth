@@ -42,6 +42,9 @@ public class ArticleInfoDto implements Serializable {
      * 博文类别
             
      */
+
+    private Integer typeId;
+
     private String type;
 
     /**
@@ -85,6 +88,12 @@ public class ArticleInfoDto implements Serializable {
     private ArticleInfoDto nextArticle;//下一篇
 
     private List<CommentInfoDto> commentInfoList;//评论信息
+
+    private String attrFlag;//文章属性 普通为1   隐私为2  置顶 为9
+
+    private String rePrintFlag; //是否转载 1:转载 0:原创
+
+    private String[] attrFlagArr;
 
     public Integer getId() {
         return id;
@@ -212,5 +221,37 @@ public class ArticleInfoDto implements Serializable {
 
     public void setNextArticle(ArticleInfoDto nextArticle) {
         this.nextArticle = nextArticle;
+    }
+
+    public String getAttrFlag() {
+        return attrFlag;
+    }
+
+    public void setAttrFlag(String attrFlag) {
+        this.attrFlag = attrFlag;
+    }
+
+    public String getRePrintFlag() {
+        return rePrintFlag;
+    }
+
+    public void setRePrintFlag(String rePrintFlag) {
+        this.rePrintFlag = rePrintFlag;
+    }
+
+    public String[] getAttrFlagArr() {
+        return attrFlagArr;
+    }
+
+    public void setAttrFlagArr(String[] attrFlagArr) {
+        this.attrFlagArr = attrFlagArr;
+    }
+
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 }

@@ -96,6 +96,12 @@ public class ArticleInfo extends EntityBean<Integer> implements Serializable {
     @Column(name = "MODIFY_DATE")
     private Date modifyDate;
 
+    @Column(name = "ATTR_FLAG")
+    private String attrFlag;//文章属性 普通为1   隐私为2  置顶 为9
+
+    @Column(name = "RE_PRINT_FLAG")
+    private String rePrintFlag; //是否转载 1:转载 0:原创
+
     public Integer getId() {
         return id;
     }
@@ -198,5 +204,21 @@ public class ArticleInfo extends EntityBean<Integer> implements Serializable {
 
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
+    }
+
+    public String getAttrFlag() {
+        return attrFlag;
+    }
+
+    public void setAttrFlag(String attrFlag) {
+        this.attrFlag = attrFlag;
+    }
+
+    public String getRePrintFlag() {
+        return rePrintFlag;
+    }
+
+    public void setRePrintFlag(String rePrintFlag) {
+        this.rePrintFlag = rePrintFlag;
     }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.popcivilar.youth.general.website.dao.WebSiteInfoMapper" >
+
+    <resultMap id="BaseResultMap" type="com.popcivilar.youth.general.website.entity.WebSiteInfo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="SITE_TITLE" property="siteTitle" jdbcType="VARCHAR" />
+        <result column="SITE_SUB_TITLE" property="siteSubTitle" jdbcType="VARCHAR" />
+        <result column="SITE_DESC" property="siteDesc" jdbcType="VARCHAR" />
+        <result column="SITE_ICO" property="siteIco" jdbcType="VARCHAR" />
+        <result column="SITE_KEYWORD" property="siteKeyword" jdbcType="VARCHAR" />
+        <result column="SITE_URL" property="siteUrl" jdbcType="VARCHAR" />
+        <result column="DELETED_FLAG" property="deletedFlag" jdbcType="VARCHAR" />
+        <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        SELECT A.id, A.SITE_TITLE, A.SITE_SUB_TITLE, A.SITE_DESC, A.SITE_ICO, A.SITE_KEYWORD, A.SITE_URL, A.DELETED_FLAG,
+        A.CREATE_DATE, A.MODIFY_DATE FROM WEB_SITE_INFO A
+    </sql>
+
+
+</mapper>

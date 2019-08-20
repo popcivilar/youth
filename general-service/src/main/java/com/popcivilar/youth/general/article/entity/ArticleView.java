@@ -2,7 +2,9 @@ package com.popcivilar.youth.general.article.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 文章信息视图
@@ -12,7 +14,7 @@ import java.util.Date;
  * @date 2019-07-07
  */
 @Entity
-public class ArticleView {
+public class ArticleView implements Serializable {
 
 
     @Column(name = "TYPE_ID")
@@ -42,6 +44,13 @@ public class ArticleView {
     @Column(name = "PUB_DATE")
     private Date pubDate;
 
+    private List<String> picShowList;//图片集合
+
+    @Column(name = "ATTR_FLAG")
+    private String attrFlag;//文章属性 普通为1   隐私为2  置顶 为9
+
+    @Column(name = "RE_PRINT_FLAG")
+    private String rePrintFlag; //是否转载 1:转载 0:原创
 
     public Integer getTypeId() {
         return typeId;
@@ -113,5 +122,29 @@ public class ArticleView {
 
     public void setPubDate(Date pubDate) {
         this.pubDate = pubDate;
+    }
+
+    public List<String> getPicShowList() {
+        return picShowList;
+    }
+
+    public void setPicShowList(List<String> picShowList) {
+        this.picShowList = picShowList;
+    }
+
+    public String getAttrFlag() {
+        return attrFlag;
+    }
+
+    public void setAttrFlag(String attrFlag) {
+        this.attrFlag = attrFlag;
+    }
+
+    public String getRePrintFlag() {
+        return rePrintFlag;
+    }
+
+    public void setRePrintFlag(String rePrintFlag) {
+        this.rePrintFlag = rePrintFlag;
     }
 }

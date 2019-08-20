@@ -30,6 +30,8 @@
         <result column="DELETED_FLAG" property="deletedFlag" jdbcType="VARCHAR" />
         <result column="CREATE_DATE" property="createDate" jdbcType="DATE" />
         <result column="MODIFY_DATE" property="modifyDate" jdbcType="DATE" />
+        <result column="ATTR_FLAG" property="attrFlag" jdbcType="VARCHAR" />
+        <result column="REP_RINT_FLAG" property="rePrintFlag" jdbcType="VARCHAR" />
     </resultMap>
 
     <resultMap id="articleViewMap" type="com.popcivilar.youth.general.article.entity.ArticleView" >
@@ -42,29 +44,53 @@
         <result column="ARTICLE_NAME" property="articleName" jdbcType="VARCHAR" />
         <result column="ARTICLE_ABSTRACT" property="articleAbstract" jdbcType="VARCHAR" />
         <result column="PUB_DATE" property="pubDate" jdbcType="DATE" />
+        <result column="ATTR_FLAG" property="attrFlag" jdbcType="VARCHAR" />
+        <result column="RE_PRINT_FLAG" property="rePrintFlag" jdbcType="VARCHAR" />
     </resultMap>
 
     <sql id="Base_Column_List" >
         SELECT ID, PUB_DATE, USER_ID, TITLE, TYPE, CONTENT, THUMB_NUM, COMMENT_NUM, READ_NUM, DELETED_FLAG,
-        CREATE_DATE, MODIFY_DATE FROM ARTICLE_INFO A
+        CREATE_DATE, MODIFY_DATE ,ATTR_FLAG,RE_PRINT_FLAG FROM ARTICLE_INFO A
     </sql>
 
 
     <select id="listView" resultMap="articleViewMap">
-        select TYPE_ID,TYPE_NAME,USER_ID,USER_NAME,USER_HEAD,ARTICLE_ID,ARTICLE_NAME,ARTICLE_ABSTRACT,PUB_DATE
+        select TYPE_ID,TYPE_NAME,USER_ID,USER_NAME,USER_HEAD,ARTICLE_ID,ARTICLE_NAME,ARTICLE_ABSTRACT,PUB_DATE,ATTR_FLAG,RE_PRINT_FLAG
         from article_view
     </select>
 
     <select id="preArticle" resultMap="BaseDtoResultMap">
         <include refid="Base_Column_List" />
-        where A.DELETED_FLAG = '0'
+        where A.DELETED_FLAG = '0' AND a.attr_flag != '2'
         and a.id &lt; #{id} order by a.id desc limit 1
     </select>
 
 
     <select id="nextArticle" resultMap="BaseDtoResultMap">
         <include refid="Base_Column_List" />
-        where A.DELETED_FLAG = '0'
+        where A.DELETED_FLAG = '0' AND a.attr_flag != '2'
         and a.id &gt; #{id} order by a.id limit 1
+    </select>
+
+    <select id="queryLatest" resultMap="articleViewMap">
+        select TYPE_ID,TYPE_NAME,USER_ID,USER_NAME,USER_HEAD,ARTICLE_ID,ARTICLE_NAME,ARTICLE_ABSTRACT,PUB_DATE,ATTR_FLAG,RE_PRINT_FLAG
+        from article_view
+        where attr_flag != '2'
+        limit #{indexShowNum}
+    </select>
+
+    <select id="queryByParam" resultMap="articleViewMap">
+        select TYPE_ID,TYPE_NAME,USER_ID,USER_NAME,USER_HEAD,ARTICLE_ID,ARTICLE_NAME,ARTICLE_ABSTRACT,PUB_DATE,ATTR_FLAG,RE_PRINT_FLAG
+        from article_view a
+        where 1 =1
+        <if test="param != null and param.attrFlagArr.length > 0">
+            and a.attr_flag in
+            <foreach collection="param.attrFlagArr" index="index" item="item" open="(" separator="," close=")">
+                 #{item}
+            </foreach>
+        </if>
+        <if test="param != null and param.typeId != null">
+            and a.TYPE_ID = #{param.typeId}
+        </if>
     </select>
 </mapper>

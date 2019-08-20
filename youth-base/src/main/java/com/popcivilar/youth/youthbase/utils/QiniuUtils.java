@@ -43,13 +43,23 @@ public class QiniuUtils {
     }
 
 
-    public String uploadImg(MultipartFile file) throws IOException {
+    /**
+     *
+     * @param file
+     * @param picFlag 系统缓存图片表示 1:是
+     * @return
+     * @throws IOException
+     */
+    public String uploadImg(MultipartFile file,String picFlag) throws IOException {
         try {
             int dotPos = file.getOriginalFilename().lastIndexOf(".");
             if (dotPos < 0) {
                 return null;
             }
             String fileName = UUID.randomUUID().toString().replaceAll("-", "");
+            if("1".equals(picFlag)) {
+                fileName = "PIC_" + fileName;
+            }
             // 调用put方法上传
             Response res = uploadManager.put(file.getBytes(), fileName, getUpToken());
             // 打印返回的信息

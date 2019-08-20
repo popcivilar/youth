@@ -71,4 +71,11 @@ public class CommentInfoServiceImpl extends BaseServiceImpl<CommentInfo> impleme
         moduleReturn.setData(parentList);
         return moduleReturn;
     }
+
+    @Override
+    public Integer countComment() {
+        CommentInfo commentInfo = new CommentInfo();
+        commentInfo.setDeletedFlag("0");
+        return commentInfoMapper.selectCount(commentInfo);
+    }
 }

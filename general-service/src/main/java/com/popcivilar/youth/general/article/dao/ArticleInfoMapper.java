@@ -18,4 +18,8 @@ public interface ArticleInfoMapper extends BaseMapper<ArticleInfo> {
     ArticleInfoDto preArticle(@Param("id") Integer id);
 
     ArticleInfoDto nextArticle(@Param("id") Integer id);
+
+    List<ArticleView> queryLatest(@Param("indexShowNum") int indexShowNum);
+
+    List<ArticleView> queryByParam(@Param("param") ArticleInfoDto articleInfoDto);
 }
