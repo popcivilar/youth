@@ -12,6 +12,7 @@ import com.popcivilar.youth.youthbase.utils.ResUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -116,6 +117,11 @@ public class UserController extends BaseController<UserInfo, UserInfoDto,UserInf
     public ModuleReturn<UserInfoDto> login(UserInfo userInfo, HttpServletRequest request) {
         ModuleReturn<UserInfoDto> moduleReturn = ModuleReturn.success();
         //1.校验登陆
+        if(userInfo.getUserPwd() == null || userInfo.getUserCode() == null){
+            moduleReturn.setCode(ResUtils.ERROR);
+            moduleReturn.setReturnMsg("请填写用户名或密码");
+            return moduleReturn;
+        }
         UserInfo loginUser = userInfoService.login(userInfo);
         if(loginUser == null){
             moduleReturn.setCode(ResUtils.USER_CODE_OR_PWD_ERROR);//登录失败

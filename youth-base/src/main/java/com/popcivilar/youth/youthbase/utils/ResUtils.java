@@ -2,6 +2,10 @@ package com.popcivilar.youth.youthbase.utils;
 
 public class ResUtils {
 
+
+
+    public static String SUCCESS = "200"; //成功
+
     public static String ERROR = "500"; //用户更新失败
 
 

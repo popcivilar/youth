@@ -14,6 +14,7 @@ public class ModuleReturn<T> implements Serializable {
 
     private String returnMsg;
 
+    private String success;
 
     public ModuleReturn(String code, T data, String returnMsg) {
         this.code = code;
@@ -74,5 +75,13 @@ public class ModuleReturn<T> implements Serializable {
 
     public void setReturnMsg(String returnMsg) {
         this.returnMsg = returnMsg;
+    }
+
+    public String getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(String success) {
+        this.success = success;
     }
 }
