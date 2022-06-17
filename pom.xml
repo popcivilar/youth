@@ -20,7 +20,7 @@
         <swagger.version>2.9.2</swagger.version>
         <cloud.version>Edgware.RELEASE</cloud.version>
         <base.version>0.0.1-SNAPSHOT</base.version>
-        <fastjson.version>1.2.58</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <mybatis.mapper.version>2.1.5</mybatis.mapper.version>
         <mysql.jdbc.version>5.1.44</mysql.jdbc.version>
         <druid.version>1.0.13</druid.version>
